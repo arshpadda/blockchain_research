@@ -12,7 +12,9 @@ class MainPage(webapp2.RequestHandler):
 
 class LoadData(webapp2.RequestHandler):
     def get(self):
+
         appengine.monkeypatch(validate_certificate=False)
+
         client = bigquery.Client()
         job = client.query(GET_ALL_DATA_QUERY.format(TABLE_NAME))
         result = job.result()
@@ -27,7 +29,7 @@ class LoadData(webapp2.RequestHandler):
         for i in range(len(rows)):
             dict_data.append({'publication_number': rows[i][0],
                               'title': rows[i][1],
-                              'top_terms': rows[i][12],
+                              'top_terms': rows[i][3],
                               'url': rows[i][19]
                               })
         return json.dumps(dict_data)
