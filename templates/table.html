@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% block content %}
+<body>
+<div style="float: left">
+    <table class="table" border="1">
+        <caption >
+            Patent with Smart Contract.
+        </caption>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Publication Number
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Top Terms
+            </th>
+            <th>
+                URL
+            </th>
+        </tr>
+        {% set n = 0 %}
+        {% for item in data %}
+        {% set n = n + 1%}
+        <tr>
+            <td>
+                {{n}}
+            </td>
+            <td>
+                {{item.publication_number}}
+            </td>
+            <td>
+                {{item.title}}
+            </td>
+            <td>
+                {{item.top_terms}}
+            </td>
+            <td>
+                {{item.url}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

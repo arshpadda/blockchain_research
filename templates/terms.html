@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+<body>
+<div style="float: left">
+    <table class="table" border="1">
+        <caption >
+            Terms Frequency in Patents Dataset
+        </caption>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Terms
+            </th>
+            <th>
+                Count
+            </th>
+        </tr>
+        {% set n = 0 %}
+        {% for item in data %}
+        {% set n = n + 1%}
+        <tr>
+            <td>
+                {{n}}
+            </td>
+            <td>
+                {{item.terms}}
+            </td>
+            <td>
+                {{item.count}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
